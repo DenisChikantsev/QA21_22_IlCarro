@@ -8,10 +8,13 @@ import tests.TestBase;
 
 public class LoginTests extends TestBase {
 
-//    @BeforeMethod
-//    public void preConditions(){
-//
-//    }
+    @BeforeMethod
+    public void preConditions(){
+        if(app.getHelperUser().isLogged()){
+            app.getHelperUser().logout();
+        }
+
+    }
 
     @Test
     public void loginSuccess(){

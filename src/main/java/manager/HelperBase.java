@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.time.temporal.WeekFields;
+import java.util.List;
 
 public class HelperBase {
 
@@ -46,5 +47,12 @@ public class HelperBase {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+     boolean isElementPresent(By locator) {
+        //return wd.findElements(locator).size()>0;
+        List<WebElement> list = wd.findElements(locator);
+        return list.size() > 0;
+
     }
 }
