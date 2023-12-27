@@ -29,6 +29,11 @@ public class HelperBase {
 
     }
 
+    public void submit(){
+        wd.findElement(By.xpath("//button[@type='submit']"))
+                .click();
+    }
+
     public String getMessage() {
 
 //        WebElement el = wd.findElement(By.cssSelector(".dialog-container>h2"));
