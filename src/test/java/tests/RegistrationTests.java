@@ -37,6 +37,70 @@ public class RegistrationTests extends TestBase{
 
 
 
+    @Test
+    public void registrationEmptyName(){
+        User user = new User()
+                .withFirstName("")
+                .withLastName("Simpson")
+                .setEmail("simpson@gmail.com")
+                .setPassword("Simp123456$");
+        app.getHelperUser().openRegistrationForm();
+        app.getHelperUser().fillRgistrationForm(user);
+        app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getErrorText(), "Name is required");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+
+    }
+
+    @Test
+    public void registrationEmptyLastName(){
+        User user = new User()
+                .withFirstName("Gomer")
+                .withLastName("")
+                .setEmail("simpson@gmail.com")
+                .setPassword("Simp123456$");
+        app.getHelperUser().openRegistrationForm();
+        app.getHelperUser().fillRgistrationForm(user);
+        app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getErrorText(), "Last name is required");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+    }
+
+    @Test
+    public void registrationWrongEmail(){
+        User user = new User()
+                .withFirstName("Gomer")
+                .withLastName("Simpson")
+                .setEmail("simpsongmail.com")
+                .setPassword("Simp123456$");
+        app.getHelperUser().openRegistrationForm();
+        app.getHelperUser().fillRgistrationForm(user);
+        app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
+        Assert.assertTrue(app.getHelperUser().getErrorText().contains("Wrong email format"));
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+    }
+
+    @Test
+    public void registrationWrongPassword(){
+        User user = new User()
+                .withFirstName("Gomer")
+                .withLastName("Simpson")
+                .setEmail("simpson@gmail.com")
+                .setPassword("Simp123");
+        app.getHelperUser().openRegistrationForm();
+        app.getHelperUser().fillRgistrationForm(user);
+        app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getErrorText(), "Password must contain minimum 8 symbols\n" +
+                "Password must contain 1 uppercase letter, 1 lowercase letter, 1 number and one special symbol of [@$#^&*!]");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+    }
+
+
+
 
     @AfterMethod
     public void postConditions() {

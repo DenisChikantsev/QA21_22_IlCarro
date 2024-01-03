@@ -1,11 +1,16 @@
 package manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.temporal.WeekFields;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
 
@@ -23,13 +28,23 @@ public class HelperBase {
         WebElement element = wd.findElement(locator);
         element.click();
         element.clear();
+        clearNew(element);
         if (text != null) {
+            System.out.println("hello");
             element.sendKeys(text);
         }
 
+
     }
 
-    public void submit(){
+
+    public void clearNew(WebElement element) {
+        element.sendKeys(" ");
+        element.sendKeys(Keys.BACK_SPACE);
+
+    }
+
+    public void submit() {
         wd.findElement(By.xpath("//button[@type='submit']"))
                 .click();
     }
@@ -40,13 +55,14 @@ public class HelperBase {
 //        String text = el.getText();
 //        return text;
         //pause(5000);
+
         return
                 wd.findElement(By.cssSelector(".dialog-container>h2"))
                         .getText();
 
     }
 
-    public void pause(int time){
+    public void pause(int time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -54,7 +70,7 @@ public class HelperBase {
         }
     }
 
-     boolean isElementPresent(By locator) {
+    boolean isElementPresent(By locator) {
         //return wd.findElements(locator).size()>0;
         List<WebElement> list = wd.findElements(locator);
         return list.size() > 0;
@@ -62,7 +78,7 @@ public class HelperBase {
     }
 
     public boolean isYallaButtonNotActive() {
-        boolean res= isElementPresent(By.cssSelector("button[disabled]"));
+        boolean res = isElementPresent(By.cssSelector("button[disabled]"));
 
         WebElement element = wd.findElement(By.cssSelector("button[type='submit']"));
         boolean result = element.isEnabled();
