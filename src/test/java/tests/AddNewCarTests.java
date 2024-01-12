@@ -17,6 +17,7 @@ public class AddNewCarTests extends TestBase{
 public void preConditions(){
     if(!app.getHelperUser().isLogged()){
         app.getHelperUser().login(new User().setEmail("margo@gmail.com").setPassword("Mmar123456$"));
+        logger.info("Logout complete");
 
     }
 
@@ -37,6 +38,7 @@ public void preConditions(){
                 .price(50)
                 .about("Very nice car")
                 .build();
+        logger.info("Test start with test data --->" + car.toString());
 
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
@@ -65,7 +67,7 @@ public void preConditions(){
                 .carRegNumber("678-900-"+i)
                 .price(50)
                 .build();
-
+        logger.info("Test start with test data --->" + car.toString());
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().submit();
