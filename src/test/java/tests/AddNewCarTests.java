@@ -39,7 +39,6 @@ public void preConditions(){
                 .about("Very nice car")
                 .build();
         logger.info("Test start with test data --->" + car.toString());
-
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().attachPhoto("C:\\Users\\marii\\QA21_22\\QA21_22_IlCarro\\02-bugatti-cd-nardo-testing.jpg");
