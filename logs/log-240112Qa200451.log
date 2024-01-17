@@ -1,7 +1,0 @@
-20:04:53.286 INFO  manager.ApplicationManager - All tests run in Chrome Browser
-20:04:54.342 INFO  manager.ApplicationManager - The link --->https://ilcarro.web.app/search
-20:05:11.058 INFO  tests.TestBase - Logout complete
-20:05:11.068 INFO  tests.TestBase - Name of method -->addNewCarReqSuccessA
-20:05:11.072 INFO  tests.TestBase - Test start with test data --->Car(location=Tel Aviv, Israel, manufacture=Mazda, model=M3, year=2022, fuel=Petrol, seats=4, carClass=C, carRegNumber=678-900-1222, price=50.0, about=null)
-20:05:18.162 INFO  tests.TestBase - Name of method -->loginSuccess
-20:05:18.198 INFO  tests.TestBase - Name of method -->registrationEmptyLastName
