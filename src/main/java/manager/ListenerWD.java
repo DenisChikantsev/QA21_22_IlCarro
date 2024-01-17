@@ -69,7 +69,7 @@ public class ListenerWD extends AbstractWebDriverEventListener {
         logger.info(throwable.getMessage());
         logger.info(throwable.fillInStackTrace().toString());
         int i = (int) (System.currentTimeMillis() / 1000 % 3600);
-        String link = "src/test/resources/screenshots/screen-" + i + ".png";
+        String link = "src/test/screenshots/screen-" + i + ".png";
         HelperCar helperCar = new HelperCar(driver);
         helperCar.getScreen(link);
         logger.info("This is the link to the screenshot with error --> " + link);
