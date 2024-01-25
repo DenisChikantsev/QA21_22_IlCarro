@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class SearchCarTests extends TestBase {
     @Test
     public void searchCurrentMonthSuccess() {
-        app.getHelperCar().searchCurrentMonth("Tel Aviv, Israel", "1/18/2024", "1/23/2024");
+        app.getHelperCar().searchCurrentMonth("Tel Aviv, Israel", "1/22/2024", "1/24/2024");
         app.getHelperCar().getScreen("src/test/screenshots/currentMonth.png");
         app.getHelperCar().submit();
         Assert.assertTrue(app.getHelperCar().isListOfCarsAppeared());
@@ -32,6 +32,16 @@ public class SearchCarTests extends TestBase {
         Assert.assertTrue(app.getHelperCar().isListOfCarsAppeared());
 
     }
+
+    @Test
+    public void negativeSearch(){
+        app.getHelperCar().searchNotValidPeriod("Tel Aviv, Israel", "1/18/2024","1/23/2024");
+        app.getHelperCar().submit();
+        Assert.assertTrue(app.getHelperCar().isYallaButtonNotActive());
+        Assert.assertTrue(app.getHelperCar().isErrorDisplayed("You can't pick date before today"));
+    }
+
+
 
     @BeforeMethod
     public void postCondition(){
