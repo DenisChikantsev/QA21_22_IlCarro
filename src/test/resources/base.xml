@@ -5,8 +5,8 @@
         <classes>
             <class name="tests.LoginTests"/>
             <class name="tests.RegistrationTests"/>
-            <class name="tests.AddNewContactTests"/>
-            <class name="tests.RemoveContactTests"/>
+            <class name="tests.AddNewCarTests"/>
+            <class name="tests.SearchCarTests"/>
 
         </classes>
     </test>

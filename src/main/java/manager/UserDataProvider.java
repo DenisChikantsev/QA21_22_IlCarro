@@ -1,13 +1,14 @@
 package manager;
 
 import models.User;
+import org.testng.annotations.DataProvider;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class UserDataProvider {
-
+    @DataProvider
     public Iterator<Object[]> userValidLogin(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{
@@ -15,7 +16,7 @@ public class UserDataProvider {
         });
         return list.iterator();
     }
-
+    @DataProvider
     public Iterator<Object[]> userWrongEmail(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{
@@ -24,7 +25,7 @@ public class UserDataProvider {
 
         return list.iterator();
     }
-
+    @DataProvider
     public Iterator<Object[]> userWrongPassword(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{
@@ -33,7 +34,7 @@ public class UserDataProvider {
 
         return list.iterator();
     }
-
+    @DataProvider
     public Iterator<Object[]> userUnregistered(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{

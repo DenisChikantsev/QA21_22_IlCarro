@@ -1,6 +1,7 @@
 package manager;
 
 import models.Car;
+import org.testng.annotations.DataProvider;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CarDataProvider {
-
+    @DataProvider
     public Iterator<Object[]> CarPositiveAllFields() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{

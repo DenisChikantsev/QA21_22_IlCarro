@@ -33,13 +33,13 @@ task moduleTest(type: Test) {
 
     useTestNG() {
 
-        def suites = System.getProperty('suite', '')
+        def suite = System.getProperty('suite', '')
 
-        if (suites.equals('testRegistration')) {
+        if (suite.equals('testRegistration')) {
             suites 'src/test/resources/testRegistration.xml'
-        } else if (suites.equals('testAddNewCar')) {
+        } else if (suite.equals('testAddNewCar')) {
             'src/test/resources/testAddNewCar.xml'
-        } else if (suites.equals('testSearchCar')) {
+        } else if (suite.equals('testSearchCar')) {
             'src/test/resources/testSearchCar.xml'
         } else {
             suites 'src/test/resources/testLogin.xml'
@@ -49,7 +49,7 @@ task moduleTest(type: Test) {
 }
 task team(type: Test){
     useTestNG(){
-        def suites;
+//        def suite;
         def groups = System.getProperty('groups')
         if (groups != null) {
             includeGroups groups
