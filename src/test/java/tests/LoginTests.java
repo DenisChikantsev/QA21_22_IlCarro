@@ -10,7 +10,7 @@ import tests.TestBase;
 
 public class LoginTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preConditions() {
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
@@ -18,7 +18,7 @@ public class LoginTests extends TestBase {
 
     }
 
-    @Test(dataProvider = "userValidLogin", dataProviderClass = UserDataProvider.class)
+    @Test(dataProvider = "userValidLogin", dataProviderClass = UserDataProvider.class,groups = {"smoke"})
     public void loginSuccess1(User user) {
 //        User user = new User().setEmail("marga@gmail.com").setPassword("Mmar123456$");
 /*
@@ -69,7 +69,7 @@ public class LoginTests extends TestBase {
     }
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void postConditions() {
         app.getHelperUser().clickOKButton();
 

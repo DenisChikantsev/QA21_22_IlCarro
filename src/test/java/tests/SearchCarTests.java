@@ -24,7 +24,7 @@ public class SearchCarTests extends TestBase {
     }
 
 
-    @Test
+    @Test(groups = {"smoke"})
     public void searchAnyPeriodSuccess() {
        app.getHelperCar().searchAnyPeriod("Tel Aviv, Israel", "4/20/2024", "1/14/2025");
         app.getHelperCar().getScreen("src/test/screenshots/any.png");
@@ -43,7 +43,7 @@ public class SearchCarTests extends TestBase {
 
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void postCondition(){
         app.getHelperCar().navigateByLogo();
     }

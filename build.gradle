@@ -28,3 +28,33 @@ dependencies {
 test {
     useTestNG()
 }
+
+task moduleTest(type: Test) {
+
+    useTestNG() {
+
+        def suites = System.getProperty('suite', '')
+
+        if (suites.equals('testRegistration')) {
+            suites 'src/test/resources/testRegistration.xml'
+        } else if (suites.equals('testAddNewCar')) {
+            'src/test/resources/testAddNewCar.xml'
+        } else if (suites.equals('testSearchCar')) {
+            'src/test/resources/testSearchCar.xml'
+        } else {
+            suites 'src/test/resources/testLogin.xml'
+        }
+
+    }
+}
+task team(type: Test){
+    useTestNG(){
+        def suites;
+        def groups = System.getProperty('groups')
+        if (groups != null) {
+            includeGroups groups
+        }
+        suites 'src/test/resources/base.xml'
+    }
+}
+

@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class AddNewCarTests extends TestBase{
 
-@BeforeClass
+@BeforeClass(alwaysRun = true)
 public void preConditions(){
     if(!app.getHelperUser().isLogged()){
         app.getHelperUser().login(new User().setEmail("margo@gmail.com").setPassword("Mmar123456$"));
@@ -24,7 +24,7 @@ public void preConditions(){
 
 }
 
-    @Test(dataProvider = "CarPositiveAllFields",dataProviderClass = CarDataProvider.class)
+    @Test(dataProvider = "CarPositiveAllFields",dataProviderClass = CarDataProvider.class,groups = {"smoke"})
     public void addNewCarSuccessAll(Car car){
         int i = new Random().nextInt(10000)+1000;
 //        Car car = Car.builder()
@@ -77,7 +77,7 @@ public void preConditions(){
                 + " added successful");
     }
 
-@AfterMethod
+@AfterMethod(alwaysRun = true)
     public void postCondition(){
     app.getHelperCar().returnToHome();
 }
